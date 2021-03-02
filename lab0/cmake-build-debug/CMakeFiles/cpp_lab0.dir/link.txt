@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/cpp_lab0.dir/src/main.cpp.o CMakeFiles/cpp_lab0.dir/src/lab0_support.cpp.o  -o cpp_lab0 
