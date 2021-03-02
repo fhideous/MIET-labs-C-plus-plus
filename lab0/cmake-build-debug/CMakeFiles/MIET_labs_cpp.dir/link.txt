@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/MIET_labs_cpp.dir/src/main.cpp.o CMakeFiles/MIET_labs_cpp.dir/src/lab0_support.cpp.o  -o MIET_labs_cpp 
