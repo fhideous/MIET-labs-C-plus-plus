@@ -1,0 +1,3 @@
+/home/fhideous/CLionProjects/MIET_labs_cpp/lab0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/fhideous/CLionProjects/MIET_labs_cpp/lab0/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/fhideous/CLionProjects/MIET_labs_cpp/lab0/cmake-build-debug/CMakeFiles/cpp_lab0.dir
