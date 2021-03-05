@@ -1,10 +1,21 @@
 //
-// Created by fhideous on 04.03.2021.
+// Created by fhideous on 01.03.2021.
 //
 
-#ifndef CPP_LAB_LAB_H
-#define CPP_LAB_LAB_H
+#ifndef MIET_LABS_CPP_LAB0_H
+#define MIET_LABS_CPP_LAB0_H
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <ctime>
+#include "algorithm"
 
-#endif //CPP_LAB_LAB_H
+/*
+ * splits the str with char
+ */
+std::vector<std::string> split(const std::string&, char);
+
+
+#endif //MIET_LABS_CPP_LAB0_H

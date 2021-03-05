@@ -28,8 +28,9 @@
 
 # Executables
 *.exe
-*.out
+*._out
 *.app
 
 .idea/
 cmake-build-debug
+lab0
