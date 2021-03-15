@@ -9,6 +9,7 @@ class Employer
 {
 public:
 	Employer();
+	Employer(const std::string &);
 	Employer(int id, const std::string &, int, const std::string &);
 	~Employer();
 
@@ -33,23 +34,5 @@ private:
 	std::string			_gender;
 
 };
-
-Employer::Employer() : _id(0), _name("-"),
-					_year(0), _gender("") {}
-
-Employer::~Employer() {}
-
-Employer::Employer(int id, const std::string &name, int year,
-				   const std::string &gender) :
-		_id(id), _name(name),
-		_year(year), _gender(gender) {}
-
-void Employer::print_empl(const Employer &empl)
-{
-	std::cout << "ID: " << empl._id << "\n";
-	std::cout << "Name: " << empl._name << "\n";
-	std::cout << "Year: " << empl._year << "\n";
-	std::cout << "SEX: " << empl._gender << "\n";
-}
 
 #endif //CPP_LAB_EMPLOYER_H
