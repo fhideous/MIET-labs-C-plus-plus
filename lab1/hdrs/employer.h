@@ -25,7 +25,7 @@ public:
 			return(1);
 		return(0);
 	}
-	static void print_empl(const Employer &empl);
+	void print_empl();
 
 private:
 	int					_id;

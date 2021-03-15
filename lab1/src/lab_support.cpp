@@ -20,3 +20,13 @@ std::vector<std::string> split(const std::string& str, char delim)
 	}
 	return tokens;
 }
+
+int check_vector_csv(std::vector<std::string> &vec)
+{
+	std::vector<std::string> gen = {"MALE", "FEMALE", "HELICOPTER"};
+	if (vec.size() != 5)
+		return 0;
+	if (vec[3] != gen[1] && vec[3] != gen[2] && vec[3] != gen[0])
+		return 0;
+	return 1;
+}

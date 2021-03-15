@@ -18,4 +18,7 @@
 std::vector<std::string> split(const std::string&, char);
 
 
+int check_vector_csv(std::vector<std::string> &);
+
+
 #endif //MIET_LABS_CPP_LAB0_H

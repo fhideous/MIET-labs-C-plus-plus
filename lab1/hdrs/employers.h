@@ -17,9 +17,9 @@ public:
 		   const std::string &);
 	Employers(const std::vector<Employer> &, const std::string &);
 
-	~Employers() {_in.close(); _out.close();};
+	~Employers() {_in.close();}
 
-	void print_emplrs();
+//	void print_emplrs();
 	void add_emplrs();
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
 	void set_path_r(const std::string &path_r) {
@@ -28,20 +28,10 @@ public:
 			std::cout << "Wrong input file";
 		_path_to_file_r = path_r;
 	}
-	void set_path_w(const std::string &path_w) {
-		_out.open(path_w);
-		if (!_out)
-			std::cout << "Wrong output file";
-		_path_to_file_w = path_w;
-	}
 	std::vector<Employer> get_emplrs()	{return _emplrs;}
 
 private:
-	void add_node(std::vector<Employer> &, const std::string &);
 	std::string			_path_to_file_r;
-	std::string			_path_to_file_w;
-
-	std::ofstream		_out;
 	std::ifstream		_in;
 
 	std::vector<Employer>	_emplrs;
