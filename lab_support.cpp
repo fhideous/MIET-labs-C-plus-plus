@@ -2,7 +2,8 @@
 // Created by fhideous on 01.03.2021.
 //
 
-#include "../hdrs/lab.h"
+//#include "../hdrs/lab.h"
+#include "lab.h"
 
 std::vector<std::string> split(const std::string& str, char delim)
 {

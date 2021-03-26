@@ -1,8 +1,10 @@
 //
 // Created by fhideous on 05.03.2021.
 //
-#include "../hdrs/lab.h"
-#include "../hdrs/employer.h"
+//#include "../hdrs/lab.h"
+//#include "../hdrs/employer.h"
+#include "lab.h"
+#include "employer.h"
 
 #ifndef CPP_LAB_EMPLOYERS_H
 #define CPP_LAB_EMPLOYERS_H
@@ -23,13 +25,13 @@ public:
 	void add_emplrs();
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
 	void set_path_r(const std::string &path_r) {
-		_in.open(path_r);
+        _in.open(path_r, std::ios::out);
 		if (!_in)
 			std::cout << "Wrong input file";
 		_path_to_file_r = path_r;
 	}
-	std::vector<Employer> get_emplrs()	{return _emplrs;}
-
+    std::vector<Employer> get_emplrs()	{return _emplrs;}
+    void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
 private:
 	std::string			_path_to_file_r;
 	std::ifstream		_in;

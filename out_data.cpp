@@ -2,9 +2,10 @@
 // Created by fhideous on 16.03.2021.
 //
 
-
-#include "../hdrs/out_data.h"
-#include "../hdrs/lab.h"
+//#include "../hdrs/lab.h"
+//#include "../hdrs/out_data.h"
+#include "out_data.h"
+#include "lab.h"
 
 
 OutEmplrs::OutEmplrs(const std::vector<Employer> &emplrs) {_data = emplrs;}

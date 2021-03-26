@@ -11,6 +11,9 @@
 #include <fstream>
 #include <ctime>
 #include "algorithm"
+//#include "stdafx.h"
+#include <fstream>
+#include <iostream>
 
 /*
  * splits the str with char

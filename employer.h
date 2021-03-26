@@ -1,6 +1,8 @@
 //
 // Created by fhideous on 05.03.2021.
 //
+//#include "../hdrs/lab.h"
+#include "lab.h"
 
 #ifndef CPP_LAB_EMPLOYER_H
 #define CPP_LAB_EMPLOYER_H
@@ -25,6 +27,10 @@ public:
 			return(1);
 		return(0);
 	}
+    std::string     get_name() { return _name; }
+    int             get_id() {return _id;}
+    std::string     get_gender() {return _gender;}
+    int             get_year() {return _year;}
 	void print_empl();
 
 private:

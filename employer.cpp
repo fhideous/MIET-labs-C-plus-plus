@@ -2,8 +2,10 @@
 // Created by fhideous on 16.03.2021.
 //
 
-#include "../hdrs/lab.h"
-#include "../hdrs/employer.h"
+//#include "../hdrs/lab.h"
+//#include "../hdrs/employer.h"
+#include "lab.h"
+#include "employer.h"
 
 Employer::Employer() : _id(0), _name("-"),
 					   _year(0), _gender("") {}
@@ -40,8 +42,8 @@ Employer::Employer(const std::string &from) {
 
 void Employer::print_empl()
 {
-	std::cout << "ID: " << _id << "\n";
-	std::cout << "Name: " << _name << "\n";
-	std::cout << "Year: " << _year << "\n";
-	std::cout << "SEX: " << _gender << "\n";
+    std::cout << _id << ";";
+    std::cout << _name << ";";
+    std::cout << _year << ";";
+    std::cout << _gender << ";\n";
 }

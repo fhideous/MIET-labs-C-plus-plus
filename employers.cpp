@@ -2,8 +2,11 @@
 // Created by fhideous on 16.03.2021.
 //
 
-#include "../hdrs/employers.h"
-#include "../hdrs/lab.h"
+
+//#include "../hdrs/lab.h"
+//#include "../hdrs/employers.h"
+#include "employers.h"
+#include "lab.h"
 
 Employers::Employers()  {}
 
@@ -16,10 +19,11 @@ Employers::Employers(const std::vector<Employer> &emplrs) :
 
 Employers::Employers(const std::vector<Employer> &emplrs,
 					 const std::string &path_to_file_r) :
-		_emplrs(emplrs),
-		_path_to_file_r(path_to_file_r)
+
+        _path_to_file_r(path_to_file_r),
+            _emplrs(emplrs)
 {
-	_in.open(path_to_file_r);
+    _in.open(path_to_file_r, std::ios::app);
 	if (!_in)
 		std::cout << "Wrong input file";
 }
@@ -40,3 +44,4 @@ void Employers::add_emplrs()
 		_emplrs.push_back(empl);
 	}
 }
+
