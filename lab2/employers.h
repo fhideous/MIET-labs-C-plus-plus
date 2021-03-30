@@ -1,8 +1,10 @@
 //
 // Created by fhideous on 05.03.2021.
 //
-#include "../hdrs/lab.h"
-#include "../hdrs/employer.h"
+//#include "../hdrs/lab.h"
+//#include "../hdrs/employer.h"
+#include "lab.h"
+#include "employer.h"
 
 #ifndef CPP_LAB_EMPLOYERS_H
 #define CPP_LAB_EMPLOYERS_H
@@ -17,31 +19,24 @@ public:
 		   const std::string &);
 	Employers(const std::vector<Employer> &, const std::string &);
 
-	~Employers() {_in.close(); _out.close();};
+	~Employers() {_in.close();}
 
-	void print_emplrs();
+//	void print_emplrs();
 	void add_emplrs();
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
-	void set_path_r(const std::string &path_r) {
-		_in.open(path_r);
+    int  set_path_r(const std::string &path_r) {
+        _in.open(path_r, std::ios::out);
 		if (!_in)
-			std::cout << "Wrong input file";
+                return 1;
 		_path_to_file_r = path_r;
+        return 0;
 	}
-	void set_path_w(const std::string &path_w) {
-		_out.open(path_w);
-		if (!_out)
-			std::cout << "Wrong output file";
-		_path_to_file_w = path_w;
-	}
-	std::vector<Employer> get_emplrs()	{return _emplrs;}
-
+    std::string get_path()
+    {return _path_to_file_r;}
+    std::vector<Employer> get_emplrs()	{return _emplrs;}
+    void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
 private:
-	void add_node(std::vector<Employer> &, const std::string &);
 	std::string			_path_to_file_r;
-	std::string			_path_to_file_w;
-
-	std::ofstream		_out;
 	std::ifstream		_in;
 
 	std::vector<Employer>	_emplrs;

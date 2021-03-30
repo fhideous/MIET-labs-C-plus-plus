@@ -2,7 +2,8 @@
 // Created by fhideous on 01.03.2021.
 //
 
-#include "../hdrs/lab.h"
+//#include "../hdrs/lab.h"
+#include "lab.h"
 
 std::vector<std::string> split(const std::string& str, char delim)
 {
@@ -19,4 +20,14 @@ std::vector<std::string> split(const std::string& str, char delim)
 		start = end + 1;
 	}
 	return tokens;
+}
+
+int check_vector_csv(std::vector<std::string> &vec)
+{
+	std::vector<std::string> gen = {"MALE", "FEMALE", "HELICOPTER"};
+    if (vec.size() != 4)
+		return 0;
+	if (vec[3] != gen[1] && vec[3] != gen[2] && vec[3] != gen[0])
+		return 0;
+	return 1;
 }
