@@ -42,8 +42,8 @@ void MainWindow::on_AddBut_clicked()
     emy_mplrs.add_emplr(new_empl);
     ui->textBrowser->append("add in """ + QString::fromStdString(emy_mplrs.get_path()) + """:\n" + QString(id.c_str())+ ";" + QString(name.c_str())+ ";" + QString(year.c_str()) + ";" + QString(sex.c_str()) + ";" );
 
-    OutEmplrs out(file_1, emy_mplrs.get_emplrs());
-    out.print_data();
+    OutEmplrs out(file_1);
+    out.print_data(emy_mplrs.get_emplrs());
 
 }
 

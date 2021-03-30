@@ -7,31 +7,31 @@
 #include "lab.h"
 #include "employer.h"
 
-Employer::Employer() : _id(0), _name("-"),
-					   _year(0), _gender("") {}
-Employer::Employer(const Employer &obj) : _id(obj._id), _name(obj._name),
-                        _year(obj._year), _gender(obj._gender){}
+int Employer::s_id = 0;
 
-Employer::Employer(Employer &&obj) : _id(obj._id), _name(obj._name),
-                        _year(obj._year), _gender(obj._gender)
+Employer::Employer() : _id(GET_ID()), _name("-"),
+					   _year(0), _gender("") {s_id++;}
+
+Employer::Employer(const Employer &obj) : _id(GET_ID()), _name(obj._name),
+										  _year(obj._year), _gender(obj._gender){}
+
+Employer::Employer(Employer &&obj) : _id(GET_ID()), _name(obj._name),
+									 _year(obj._year), _gender(obj._gender)
 {
-    obj._id = 0;
-    obj._name = nullptr;
+    obj._name = "";
     obj._year = 0;
-    obj._gender = nullptr;
+    obj._gender = "";
 }
 
 Employer::~Employer() {}
 
-Employer::Employer(int id, const std::string &name, int year,
+Employer::Employer(const std::string &name, int year,
 				   const std::string &gender) :
-		_id(id), _name(name),
+		_id(GET_ID()), _name(name),
 		_year(year), _gender(gender) {}
-
 
 Employer::Employer(const std::string &from) {
 	std::vector<std::string>	fr_split;
-
 	fr_split = split(from, ';');
 	if (fr_split.size() != 4)
 	{
@@ -42,7 +42,7 @@ Employer::Employer(const std::string &from) {
 		_gender = "NaN";
 		return ;
 	}
-	_id =stoi(fr_split[0]);
+	_id = stoi(fr_split[0]);
 	_name = fr_split[1];
 	_year = stoi(fr_split[2]);
 	if(set_gender(fr_split[3]))
@@ -59,8 +59,6 @@ void Employer::operator= (const Employer &obj)
     _name = obj._name;
     _year = obj._year;
     _gender = obj._gender;
-
-
 }
 
 void Employer::operator= (Employer &&obj)
@@ -71,9 +69,9 @@ void Employer::operator= (Employer &&obj)
     _gender = obj._gender;
 
     obj._id = 0;
-    obj._name = nullptr;
+    obj._name = "";
     obj._year = 0;
-    obj._gender = nullptr;
+    obj._gender = "";
 }
 
 //int Employer::check_valid_id(int id)
@@ -81,7 +79,7 @@ void Employer::operator= (Employer &&obj)
 
 //}
 
-void Employer::print_empl()
+void Employer::print_empl() const
 {
     std::cout << _id << ";";
     std::cout << _name << ";";

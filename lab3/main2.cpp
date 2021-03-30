@@ -27,11 +27,14 @@ int main(int argc, char *argv[])
 		std::cout << "Can't read";
 	my_mplrs.add_emplrs();
 
+	Employer empl2("Vlad", 12, "MALE");
+	Employer empl3("Vlad", 1124, "MALE");
 
 	empls = my_mplrs.get_emplrs();
-	Employer emp(empls[1]);
-	Employer empl2, empl3;
-	empl2 = emp;
+	Employer emp(std::move(empls[0]));
+	int ij = emp.get_id();
+	empl2 = std::move(emp);
+	int asd = empl2.get_id();
 	int i = 0;
 	for(auto &n : empls)
 	{
@@ -40,7 +43,6 @@ int main(int argc, char *argv[])
 		std :: string str_del = n.get_name();
 		i++;
 	}
-
 	if (i < (int)empls.size()) {
 
 		std:: cout << str;

@@ -11,21 +11,13 @@
 class	OutEmplrs
 {
 public:
-
-	OutEmplrs(const std::vector<Employer> &);
+	OutEmplrs(const std::string &);
 	OutEmplrs(const std::string &, const std::vector<Employer> &);
-	void set_path_w(const std::string &path_w) {
-        _out.open(path_w,  std::ios_base::app);
-		if (!_out)
-			std::cout << "Wrong output file";
-		_path_to_file_w = path_w;
-	}
-	void print_data();
-    void set_data(const std::vector<Employer> &empls) {_data = empls;}
+	bool set_path_w(const std::string &path_w);
+	void print_data(const std::vector<Employer> &) const;
 
 private:
 	std::ofstream				_out;
-	std::vector<Employer>		_data;
 	std::string					_path_to_file_w;
 };
 

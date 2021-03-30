@@ -21,19 +21,18 @@ public:
 
 	~Employers() {_in.close();}
 
-//	void print_emplrs();
 	void add_emplrs();
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
-    int  set_path_r(const std::string &path_r) {
+    bool set_path_r(const std::string &path_r) {
         _in.open(path_r, std::ios::out);
 		if (!_in)
-                return 1;
+                return true;
 		_path_to_file_r = path_r;
-        return 0;
+        return false;
 	}
     std::string get_path() {return _path_to_file_r;}
     std::vector<Employer> get_emplrs()	{return _emplrs;}
-    Employer get_emplr(int i) {return _emplrs[i];};
+    Employer get_emplr(int i) {return std::move(_emplrs[i]);};
     void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
 
 private:
