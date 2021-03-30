@@ -4,7 +4,6 @@
 #include "out_data.h"
 #include "QString"
 #include <QLineEdit>
-#include <algorithm>
 #include <string>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,7 +19,6 @@ MainWindow::~MainWindow()
 }
 
 
-
 void MainWindow::on_AddBut_clicked()
 {
     Employers emy_mplrs;
@@ -28,7 +26,7 @@ void MainWindow::on_AddBut_clicked()
     std::string file_1 = "/home/fhideous/lab2/1";
 
     emy_mplrs.set_path_r(file_1);
-    emy_mplrs.add_emplrs();
+//    emy_mplrs.add_emplrs();
 
     std::string id  =(ui->lineEdit_0->text().toStdString());
     std::string name = ui->lineEdit_1->text().toStdString();
@@ -38,7 +36,7 @@ void MainWindow::on_AddBut_clicked()
     Employer new_empl(stoi(id), name, stoi(year),sex);
 
     emy_mplrs.add_emplr(new_empl);
-    ui->textBrowser->append("add: "+ QString(id.c_str())+" "+ QString(name.c_str())+ " " + QString(year.c_str()) + " " + QString(sex.c_str()) );
+    ui->textBrowser->append("add in """ + QString::fromStdString(emy_mplrs.get_path()) + """:\n" + QString(id.c_str())+ ";" + QString(name.c_str())+ ";" + QString(year.c_str()) + ";" + QString(sex.c_str()) + ";" );
 
     OutEmplrs out(file_1, emy_mplrs.get_emplrs());
     out.print_data();
@@ -55,7 +53,11 @@ void MainWindow::on_pushButton_clicked()
     Employers my_mplrs;
     Employer emp;
 
-    my_mplrs.set_path_r(file_0);
+    if (my_mplrs.set_path_r(file_0))
+    {
+        ui->textBrowser->append("Wrong reading file\n");
+        return ;
+    }
     my_mplrs.add_emplrs();
     empls = my_mplrs.get_emplrs();
 
@@ -66,14 +68,17 @@ void MainWindow::on_pushButton_clicked()
             break ;
         i++;
     }
-    if (i < empls.size())
+
+    if (i < (int)empls.size())
     {
         emp = empls[i];
-
-        ui->textBrowser->setText(QString::fromStdString(std::to_string(emp.get_id())));
-        ui->textBrowser->append(QString::fromStdString(emp.get_name()));
-        ui->textBrowser->append(QString::fromStdString(emp.get_gender()));
-        ui->textBrowser->append(QString::fromStdString(std::to_string(emp.get_year())));
-
+        ui->textBrowser->append("Info: \n--------------");
+        ui->textBrowser->append("ID: \t\t" + QString::fromStdString(std::to_string(emp.get_id())));
+        ui->textBrowser->append("Name: \t\t" + QString::fromStdString(emp.get_name()));
+        ui->textBrowser->append("Gender: \t\t" + QString::fromStdString(emp.get_gender()));
+        ui->textBrowser->append("Year of birth: \t" + QString::fromStdString(std::to_string(emp.get_year())));
+        ui->textBrowser->append("--------------");
     }
+    else
+        ui->textBrowser->append("Name does not found");
 }

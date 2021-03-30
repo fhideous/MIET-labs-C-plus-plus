@@ -24,12 +24,15 @@ public:
 //	void print_emplrs();
 	void add_emplrs();
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
-	void set_path_r(const std::string &path_r) {
+    int  set_path_r(const std::string &path_r) {
         _in.open(path_r, std::ios::out);
 		if (!_in)
-			std::cout << "Wrong input file";
+                return 1;
 		_path_to_file_r = path_r;
+        return 0;
 	}
+    std::string get_path()
+    {return _path_to_file_r;}
     std::vector<Employer> get_emplrs()	{return _emplrs;}
     void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
 private:

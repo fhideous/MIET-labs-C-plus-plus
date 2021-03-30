@@ -19,25 +19,26 @@ Employer::Employer(int id, const std::string &name, int year,
 
 Employer::Employer(const std::string &from) {
 	std::vector<std::string>	fr_split;
-	static int					count = 1;
 
 	fr_split = split(from, ';');
-	if (fr_split.size() != 5)
+	if (fr_split.size() != 4)
 	{
-//		std::cout << "wrong number of arguments in " << to.size() + count << " line\n";
-		count++;
+//		Neeed Erroor
+		_id = -1;
+		_name = "NaN";
+		_year = -1;
+		_gender = "NaN";
 		return ;
 	}
 	_id =stoi(fr_split[0]);
 	_name = fr_split[1];
 	_year = stoi(fr_split[2]);
-	_gender= fr_split[3];
 	if(set_gender(fr_split[3]))
 	{
-//		std::cout << "wrong gender in " << to.size() + count << " line\n";
-		count++;
-		return  ;
-	}
+//		Wrong Gender
+	_gender = "NaN";
+	} else
+		_gender = fr_split[3];
 }
 
 void Employer::print_empl()
