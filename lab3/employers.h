@@ -31,14 +31,14 @@ public:
 		_path_to_file_r = path_r;
         return 0;
 	}
-    std::string get_path()
-    {return _path_to_file_r;}
+    std::string get_path() {return _path_to_file_r;}
     std::vector<Employer> get_emplrs()	{return _emplrs;}
+    Employer get_emplr(int i) {return _emplrs[i];};
     void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
-private:
-	std::string			_path_to_file_r;
-	std::ifstream		_in;
 
+private:
+    std::string             _path_to_file_r;
+    std::ifstream           _in;
 	std::vector<Employer>	_emplrs;
 };
 

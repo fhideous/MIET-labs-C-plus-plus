@@ -22,10 +22,14 @@ MainWindow::~MainWindow()
 void MainWindow::on_AddBut_clicked()
 {
     Employers emy_mplrs;
-    std::string file_0 = "/home/fhideous/lab2/csv.csv";
-    std::string file_1 = "/home/fhideous/lab2/1";
+    std::string file_1 = "/home/fhideous//lab2/lab3/1";
 
-    emy_mplrs.set_path_r(file_1);
+
+    if(emy_mplrs.set_path_r(file_1))
+    {
+        ui->textBrowser->append("Wrong input file");
+        return ;
+    }
 //    emy_mplrs.add_emplrs();
 
     std::string id  =(ui->lineEdit_0->text().toStdString());
@@ -45,7 +49,7 @@ void MainWindow::on_AddBut_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    std::string file_0 = "/home/fhideous/lab2/1";
+    std::string file_0 = "/home/fhideous/lab2/lab3/1";
     QString str = ui->lineEdit_3->text();
 
 
@@ -55,7 +59,7 @@ void MainWindow::on_pushButton_clicked()
 
     if (my_mplrs.set_path_r(file_0))
     {
-        ui->textBrowser->append("Wrong reading file\n");
+        ui->textBrowser->append("Wrong reading file");
         return ;
     }
     my_mplrs.add_emplrs();

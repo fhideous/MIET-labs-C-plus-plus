@@ -41,4 +41,3 @@ void Employers::add_emplrs()
 		_emplrs.push_back(empl);
 	}
 }
-
