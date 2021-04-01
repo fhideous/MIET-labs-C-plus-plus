@@ -12,9 +12,9 @@ class	OutEmplrs
 {
 public:
 	OutEmplrs(const std::string &);
-	OutEmplrs(const std::string &, const std::vector<Employer> &);
+    OutEmplrs(const std::string &, const Employer &);
 	bool set_path_w(const std::string &path_w);
-	void print_data(const std::vector<Employer> &) const;
+    void print_data(const Employer &) const;
 
 private:
 	std::ofstream				_out;

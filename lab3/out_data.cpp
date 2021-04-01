@@ -11,7 +11,7 @@ OutEmplrs::OutEmplrs(const std::string &path) {
 	set_path_w(path);
 }
 
-OutEmplrs::OutEmplrs(const std::string &path ,const std::vector<Employer> &emplrs)
+OutEmplrs::OutEmplrs(const std::string &path ,const Employer &emplrs)
 {
 	set_path_w(path);
 	print_data(emplrs);
@@ -25,13 +25,15 @@ bool OutEmplrs::set_path_w(const std::string &path_w) {
 	return false;
 }
 
-void OutEmplrs::print_data(const std::vector<Employer> &data) const
+void OutEmplrs::print_data(const Employer &data) const
 {
 	std::streambuf  *coutbuf = std::cout.rdbuf();
 	if (_path_to_file_w.length())
 		std::cout.rdbuf(_out.rdbuf());
 
-	for (auto &n : data)
-		n.print_empl();
+//	for (auto &n : data)
+        data.print_empl();
 	std::cout.rdbuf(coutbuf);
 }
+
+

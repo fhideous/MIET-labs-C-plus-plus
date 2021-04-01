@@ -22,18 +22,12 @@ public:
 	~Employers() {_in.close();}
 
 	void add_emplrs();
+	bool set_path_r(const std::string &path_r);
 	void set_emplrs(const std::vector<Employer> &empllrs) {_emplrs = empllrs;}
-    bool set_path_r(const std::string &path_r) {
-        _in.open(path_r, std::ios::out);
-		if (!_in)
-                return true;
-		_path_to_file_r = path_r;
-        return false;
-	}
-    std::string get_path() {return _path_to_file_r;}
-    std::vector<Employer> get_emplrs()	{return _emplrs;}
-    Employer get_emplr(int i) {return std::move(_emplrs[i]);};
-    void add_emplr(Employer &emplr) {_emplrs.push_back(emplr);}
+	std::string get_path() const {return _path_to_file_r;}
+    std::vector<Employer> get_emplrs() const	{return _emplrs;}
+    Employer get_emplr(int i) const {return std::move(_emplrs[i]);};
+    void add_emplr(Employer &&emplr) {_emplrs.push_back(std::move(emplr));}
 
 private:
     std::string             _path_to_file_r;
