@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "employers.h"
+#include "professor.h"
+#include "Student.h"
+#include "Empl.h"
 #include "out_data.h"
 #include "QString"
 #include <QLineEdit>
@@ -11,8 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +30,7 @@ void MainWindow::on_AddBut_clicked()
 
     if(emy_mplrs.set_path_r(file_1))
     {
-        ui->textBrowser->append("Wrong input file");
+        ui->textBrowser->error("Wrong input file");
         return ;
     }
     if (is_first)
@@ -40,7 +41,11 @@ void MainWindow::on_AddBut_clicked()
     std::string name = ui->lineEdit_1->text().toStdString();
     std::string year  =(ui->lineEdit_2->text().toStdString());
     std::string sex = ui->comboBox->currentText().toStdString();
-
+    if( year == "" )
+    {
+        ui->textBrowser->error("Wrong input data");
+        return ;
+    }
     std::vector<std::string> data = {name, year, sex};
     Employer new_empl(data);
     OutEmplrs out(file_1);
@@ -60,29 +65,27 @@ void MainWindow::on_pushButton_clicked()
 {
     std::string file_0 = "/home/fhideous/lab2/lab3/1";
     QString str = ui->lineEdit_3->text();
-
-    std::vector<Employer> empls;
     Employers my_mplrs;
 
     if (my_mplrs.set_path_r(file_0))
     {
-        ui->textBrowser->append("Wrong reading file");
+        ui->textBrowser->error("Wrong reading file");
         return ;
     }
     my_mplrs.add_emplrs();
-    empls = my_mplrs.get_emplrs();
+//    empls = my_mplrs.get_emplrs();
 
     int i = 0;
-    for(auto &n : empls)
+    for(auto &n : my_mplrs.get_emplrs())
     {
         if (QString::fromStdString(n.get_name()) == str)
             break ;
         i++;
     }
 
-    if (i < (int)empls.size())
+    if (i < my_mplrs.get_emplrs().size())
     {
-        Employer emp = std::move(empls[i]);
+        Employer emp = std::move(my_mplrs.get_emplrs()[i]);
         ui->textBrowser->append("Info: \n--------------");
         ui->textBrowser->append("ID: \t\t" + QString::fromStdString(std::to_string(emp.get_id())));
         ui->textBrowser->append("Name: \t\t" + QString::fromStdString(emp.get_name()));
@@ -91,5 +94,25 @@ void MainWindow::on_pushButton_clicked()
         ui->textBrowser->append("--------------");
     }
     else
-        ui->textBrowser->append("Name does not found");
+        ui->textBrowser->error("Name does not found");
+}
+
+void MainWindow::on_Info_clicked()
+{
+    std::vector<Employer*> emplrs;
+    Employers my_mplrs;
+
+    std::vector<std::string> data = {"Vlad", "2001", "MALE"};
+    Empl emp1("120400",data);
+    data[0] = "Igor";
+    Student stud("IVT", data);
+    data[0] = "Sonya";
+    data[2] = "FEMALE";
+    Professor prof("Math", data);
+    emplrs.push_back(&emp1);
+    emplrs.push_back(&stud);
+    emplrs.push_back(&prof);
+    for(auto &n :emplrs)
+        ui->textBrowser->append(QString::fromStdString(n->repr()));
+    ui->textBrowser->error("Error");
 }

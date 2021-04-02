@@ -77,7 +77,6 @@ void Employer::operator= (Employer &&obj)
     obj._gender = "";
 }
 
-
 void Employer::print_empl() const
 {
 //    std::cout << _id << ";";
@@ -85,3 +84,8 @@ void Employer::print_empl() const
     std::cout << _year << ";";
     std::cout << _gender << ";\n";
 }
+
+std::string Employer::repr() const
+{
+	return "Parent";
+};

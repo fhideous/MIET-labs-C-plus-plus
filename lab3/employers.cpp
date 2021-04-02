@@ -16,13 +16,13 @@ Employers::Employers(const std::string &path_to_file_r)
 	set_path_r(path_to_file_r);
 }
 
-Employers::Employers(const std::vector<Employer> &emplrs) :
-		_emplrs(emplrs) {}
+Employers::Employers(std::vector<Employer> &emplrs) :
+        _emplrs(std::move(emplrs)) {}
 
-Employers::Employers(const std::vector<Employer> &emplrs,
+Employers::Employers(std::vector<Employer> &emplrs,
 					 const std::string &path_to_file_r) :
         _path_to_file_r(path_to_file_r),
-        _emplrs(emplrs)
+        _emplrs(std::move(emplrs))
 {
 	set_path_r(path_to_file_r);
 }

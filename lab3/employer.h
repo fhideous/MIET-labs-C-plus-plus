@@ -16,7 +16,7 @@ public:
     Employer(int id, const std::vector<std::string> &);
 
 //	Employer(const std::string &, int, const std::string &);
-    Employer(const Employer &) = default;                      // конструктор копирования
+    Employer(const Employer &) = delete;                      // конструктор копирования
     Employer(Employer &&);                                     // конструктор перемещения получает rvalue reference
     ~Employer();
     void operator= (const Employer &obj);      //присваивание с копированием
@@ -33,6 +33,7 @@ public:
             return(0);
         return(1);
     }
+    virtual	std::string repr() const;
     std::string     get_name() const {return _name;}
     std::string     get_gender() const {return _gender;}
     int             get_year() const {return _year;}
@@ -40,7 +41,7 @@ public:
     void 			print_empl() const;
     int				get_id() const {return _id;}
 
-private:
+protected:
     int					_id ;
     std::string			_name;
     int 				_year ;
