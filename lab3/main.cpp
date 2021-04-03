@@ -9,11 +9,6 @@
 #include "lab.h"
 #include "employers.h"
 #include "out_data.h"
-/*
- * file .csv must end with one empty line
- */
-
-
 
 
 int main(int argc, char *argv[])
