@@ -22,27 +22,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    Empl.cpp \
-    Student.cpp \
     employer.cpp \
     employers.cpp \
-    error_text_browser.cpp \
     lab_support.cpp \
     main.cpp \
     mainwindow.cpp \
-    out_data.cpp \
-    professor.cpp
+    out_data.cpp
 
 HEADERS += \
-    Empl.h \
-    Student.h \
     employer.h \
     employers.h \
-    error_text_browser.h \
     lab.h \
     mainwindow.h \
-    out_data.h \
-    professor.h
+    out_data.h
 
 FORMS += \
     mainwindow.ui
