@@ -7,7 +7,11 @@
 
 #include "AbstractReader.h"
 
-class JSONReader: AbstractReader {
+class JSONReader: public AbstractReader {
+public:
+	explicit JSONReader(std::string &path):
+		AbstractReader(path){}
+	Employer	read();
 
 };
 

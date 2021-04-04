@@ -3,3 +3,8 @@
 //
 
 #include "JSONReader.h"
+
+Employer JSONReader::read()
+{
+		
+}
