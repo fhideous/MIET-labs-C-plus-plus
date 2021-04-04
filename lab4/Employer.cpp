@@ -14,7 +14,7 @@
 int Employer::s_id = 0;
 
 Employer::Employer() : _id(0), _name("-"),
-					   _year(0), _gender("") {}
+					   _year(""), _gender("") {}
 
 //Employer::Employer(const Employer &obj) : _id(obj._id), _name(obj._name),
 //										  _year(obj._year), _gender(obj._gender){}

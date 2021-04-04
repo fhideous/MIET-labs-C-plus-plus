@@ -2,10 +2,10 @@
 // Created by fhideous on 05.03.2021.
 //
 //#include "../hdrs/lab.h"
-#include "lab.h"
-
 #ifndef CPP_LAB_EMPLOYER_H
 #define CPP_LAB_EMPLOYER_H
+
+#include "lab.h"
 
 class Employer
 {

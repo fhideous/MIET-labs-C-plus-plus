@@ -11,15 +11,8 @@
 #include <fstream>
 #include <ctime>
 #include "algorithm"
-#include <fstream>
-#include <iostream>
 
-/*
- * splits the str with char
- */
 std::vector<std::string> split(const std::string&, char);
-
-
 bool check_vector_csv(std::vector<std::string> &);
-
 #endif
+

@@ -16,10 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
+    AbstractReader.cpp \
+    CSVReader.cpp \
+    Employer.cpp \
+    JSONReader.cpp \
+    lab_support.cpp \
+#    main.cpp \
+    main2.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    AbstractReader.h \
+    CSVReader.h \
+    Employer.h \
+    JSONReader.h \
+    lab.h \
     mainwindow.h
 
 FORMS += \
@@ -29,3 +40,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    1 \
+    lab4.pro.user
