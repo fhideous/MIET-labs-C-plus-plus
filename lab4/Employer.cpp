@@ -4,13 +4,6 @@
 #include "Employer.h"
 #include "lab.h"
 
-//
-// Created by fhideous on 16.03.2021.
-//
-
-#include "lab.h"
-#include "Employer.h"
-
 int Employer::s_id = 0;
 
 Employer::Employer() : _id(0), _name("-"),
@@ -37,27 +30,38 @@ Employer::Employer(const std::string &name, const std::string &year,
 
 
 Employer::Employer(const std::vector<std::string> &fr_split) {
-	_id = GET_ID();
-	_name = fr_split[0];
-	_year = fr_split[1];
-	if(set_gender(fr_split[2]))
+	if (check_vector_csv(fr_split))
 	{
-//		Wrong Gender
-		_gender = "NaN";
-	} else
+		_id = GET_ID();
+		_name = fr_split[0];
+		_year = fr_split[1];
 		_gender = fr_split[2];
+
+	}
+	else
+	{
+		_id = -1;
+		_name = "NaN";
+		_year = "-1:-1:-1";
+		_gender = "NaN";
+	}
 }
 
 Employer::Employer(int id, const std::vector<std::string> &fr_split) {
-	_id = id;
-	_name = fr_split[0];
-	_year = stoi(fr_split[1]);
-	if(set_gender(fr_split[2]))
+	if (check_vector_csv(fr_split))
 	{
-//		Wrong Gender
-		_gender = "NaN";
-	} else
+		_id = id;
+		_name = fr_split[0];
+		_year = fr_split[1];
 		_gender = fr_split[2];
+	}
+	else
+	{
+		_id = -1;
+		_name = "NaN";
+		_year = "-1:-1:-1";
+		_gender = "NaN";
+	}
 }
 
 void Employer::operator= (const Employer &obj)

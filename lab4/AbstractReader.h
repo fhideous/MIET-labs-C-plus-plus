@@ -12,25 +12,19 @@
 
 class AbstractReader {
 public:
-	explicit AbstractReader(std::string &path): _path_r(path)
-		{
-			_in.open(_path_r, std::ios::in);
-			if (!_in)
-				_is_op = false;
-			else
-				_is_op = true;
-		}
-
-	virtual	Employer raed() = 0;
-
+	virtual	Employer raed()
+	{
+		_is_op = false;
+		Employer emp;
+		return std::move(emp);
+	}
 	bool is_open() const {return _is_op;}
 	std::string get_path() const {return _path_r;}
-
 protected:
+
+	AbstractReader(std:: string &path) : _path_r(path) {}
 	std::string		_path_r;
 	std::ifstream	_in;
 	bool 			_is_op;
 };
-
-
 #endif //LAB4_ABSTRACTREADER_H

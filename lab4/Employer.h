@@ -26,13 +26,7 @@ public:
 	void set_name(const std::string &name) { _name = name;}
 
 	void set_year(std::string year) { _year = std::move(year);}
-	int set_gender(const std::string &gender)  const{
-		if (gender == "MALE" ||
-			gender == "HELICOPTER" ||
-			gender ==	"FEMALE")
-			return(0);
-		return(1);
-	}
+	void set_gender(const std::string &gender) {_gender = gender;}
 //	virtual	std::string repr() const;
 	std::string     get_name() const {return _name;}
 	std::string     get_gender() const {return _gender;}

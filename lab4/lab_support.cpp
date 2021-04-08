@@ -22,12 +22,12 @@ std::vector<std::string> split(const std::string& str, char delim)
 	return tokens;
 }
 
-bool check_vector_csv(std::vector<std::string> &vec)
+bool check_vector_csv(const std::vector<std::string> &vec)
 {
 	std::vector<std::string> gen = {"MALE", "FEMALE", "HELICOPTER"};
-    if (vec.size() != 4)
+    if (vec.size() != 3)
 		return false;
-	if (vec[3] != gen[1] && vec[3] != gen[2] && vec[3] != gen[0])
+	if (vec[2] != gen[1] && vec[2] != gen[2] && vec[2] != gen[0])
 		return false;
 	return true;
 }

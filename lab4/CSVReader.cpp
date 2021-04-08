@@ -24,5 +24,5 @@ Employer CSVReader::read()
 		emp.set_year(fr_split[1]);
 		emp.set_gender(fr_split[2]);
 	}
-	return std::move(emp);
+	return 	std::move(emp);
 }

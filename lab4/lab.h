@@ -13,6 +13,6 @@
 #include "algorithm"
 
 std::vector<std::string> split(const std::string&, char);
-bool check_vector_csv(std::vector<std::string> &);
+bool check_vector_csv(const std::vector<std::string> &);
 #endif
 
