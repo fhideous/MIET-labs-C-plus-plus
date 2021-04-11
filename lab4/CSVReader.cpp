@@ -4,7 +4,21 @@
 
 #include "CSVReader.h"
 
-Employer CSVReader::read()
+void		CSVReader::open_path(std::string &path)
+{
+	_in.open(path, std::ios::in);
+	if (!_in)
+		_is_op = false;
+	else
+		_is_op = true;
+	_path_r = path;
+}
+
+void		CSVReader::fd_close() {_in.close(); _is_op = false; _path_r = "Nan";}
+
+bool		CSVReader::is_open() const {return _is_op;}
+
+Employer	CSVReader::read()
 {
 	std::string					s;
 	std::vector<std::string>	fr_split;

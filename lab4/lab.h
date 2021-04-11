@@ -5,6 +5,7 @@
 #ifndef CPP_LAB4_LAB_H
 #define CPP_LAB4_LAB_H
 
+#include "json.hpp"
 #include <iostream>
 #include <vector>
 #include <string>

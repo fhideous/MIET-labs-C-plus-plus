@@ -9,10 +9,18 @@
 
 class JSONReader: public AbstractReader {
 public:
-	explicit JSONReader(std::string &path):
-		AbstractReader(path){}
+	explicit JSONReader(std::string &path): AbstractReader(path)
+	{
+		open_path(path);
+	}
+	void 		fd_close();
+	void		open_path(std::string &path);
 	Employer	read();
+	std::vector<Employer> read_all();
+	bool		is_open() const;
 
+private:
+	nlohmann::json json;
 };
 
 

@@ -12,13 +12,8 @@
 
 class AbstractReader {
 public:
-	virtual	Employer raed()
-	{
-		_is_op = false;
-		Employer emp;
-		return std::move(emp);
-	}
-	bool is_open() const {return _is_op;}
+	virtual	Employer raed() {}
+	virtual bool is_open() const {}
 	std::string get_path() const {return _path_r;}
 protected:
 

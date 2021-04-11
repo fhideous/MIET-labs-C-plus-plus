@@ -11,13 +11,11 @@ class CSVReader: public AbstractReader
 public:
 	explicit CSVReader(std::string &path) : AbstractReader(path)
 	{
-		_in.open(_path_r, std::ios::in);
-		if (!_in)
-			_is_op = false;
-		else
-			_is_op = true;
+		open_path(path);
 	}
+	void 		fd_close();
+	void		open_path(std::string &path);
 	Employer	read();
-
+	bool		is_open() const;
 };
 #endif //CPP_LAB4_CSVREADER_H
