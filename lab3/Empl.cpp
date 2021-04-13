@@ -5,7 +5,7 @@
 #include "Empl.h"
 
 Empl::Empl(const std::string &salary, const std::vector<std::string> &data) :
-			_salary(salary), Employer(data) {}
+            Employer(data), _salary(salary) {}
 
 std::string Empl::repr() const {
 	return ("Just an employer:\t" + _salary + " " + _name + " "

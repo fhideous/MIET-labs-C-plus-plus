@@ -22,23 +22,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    AbstractReader.cpp \
+    CSVReader.cpp \
     Empl.cpp \
+    JSONReader.cpp \
     Student.cpp \
     employer.cpp \
     employers.cpp \
     error_text_browser.cpp \
     lab_support.cpp \
     main.cpp \
+#    main2.cpp \
     mainwindow.cpp \
     out_data.cpp \
     professor.cpp
 
 HEADERS += \
+    AbstractReader.h \
+    CSVReader.h \
     Empl.h \
+    JSONReader.h \
     Student.h \
     employer.h \
     employers.h \
     error_text_browser.h \
+    json.hpp \
     lab.h \
     mainwindow.h \
     out_data.h \
@@ -52,3 +60,10 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    1 \
+    CMakeLists.txt \
+    csv.csv \
+    lab2.pro.user \
+    lab3.pro.user

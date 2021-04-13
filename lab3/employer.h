@@ -26,21 +26,15 @@ public:
     void set_name(const std::string &name) { _name = name;}
 
     void set_year(int year) { _year = year;}
-    int set_gender(const std::string &gender)  const{
-        if (gender == "MALE" ||
-            gender == "HELICOPTER" ||
-            gender ==	"FEMALE")
-            return(0);
-        return(1);
-    }
+    bool set_gender(const std::string &gender) { _gender = gender;}
     virtual	std::string repr() const;
     std::string     get_name() const {return _name;}
     std::string     get_gender() const {return _gender;}
     int             get_year() const {return _year;}
-    static int      GET_ID() {return s_id++;}
+    static int      GET_ID() {return ++s_id;}
     void 			print_empl() const;
     int				get_id() const {return _id;}
-
+    void            id_reset() {s_id = 0;}
 protected:
     int					_id ;
     std::string			_name;
