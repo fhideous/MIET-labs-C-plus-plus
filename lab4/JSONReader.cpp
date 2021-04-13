@@ -27,34 +27,36 @@ bool		JSONReader::is_open() const {return _is_op;}
 
 void from_json(const nlohmann::json& j, Employer& empl)
 {
-//	j.at("id").get_to(empl.);
 	std:: string tmp;
 	j.at("Name").get_to(tmp);
 	empl.set_name(tmp);
 	j.at("Year").get_to(tmp);
-	empl.set_year(tmp);
+    empl.set_year(stoi(tmp));
 	j.at("Sex").get_to(tmp);
 	empl.set_gender(tmp);
 
 }
 
-Employer JSONReader::read()
+bool  JSONReader::read(Employer &empl)
 {
 	static int count;
-	Employer empl;
 
 	empl = json[count].get<Employer>();
 	count++;
-	return empl;
+	if (json[count + 1].empty()) // is working?
+		return false;
+	else
+		return true;
 }
 
 std::vector<Employer> JSONReader::read_all() {
 	std::vector<Employer> empls;
-	for(auto &i : json)
+    for(auto &i : json)
 	{
 		auto c = i.get<Employer>();
 		empls.push_back(std::move(c));
-	}
+    }
+    empls[0].id_reset();
 	return (empls);
 }
 

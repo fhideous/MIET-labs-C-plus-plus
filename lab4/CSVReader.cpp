@@ -18,25 +18,35 @@ void		CSVReader::fd_close() {_in.close(); _is_op = false; _path_r = "Nan";}
 
 bool		CSVReader::is_open() const {return _is_op;}
 
-Employer	CSVReader::read()
+bool 		CSVReader::read(Employer &empl)
 {
 	std::string					s;
 	std::vector<std::string>	fr_split;
-	Employer					emp;
+//	Employer					emp;
 
 	std::getline(_in, s);
 	fr_split = split(s, ';');
 	if(!check_vector_csv(fr_split))
 	{
-		emp.set_name("Nan");
-		emp.set_year("-1:-1:-1");
-		emp.set_gender("KeK");
+		empl.set_name("Nan");
+        empl.set_year(-1);
+		empl.set_gender("KeK");
 	}
 	else
 	{
-		emp.set_name(fr_split[0]);
-		emp.set_year(fr_split[1]);
-		emp.set_gender(fr_split[2]);
+		empl.set_name(std::move(fr_split[0]));
+        empl.set_year(stoi(std::move(fr_split[1])));
+        empl.set_gender(std::move(fr_split[2]));
 	}
-	return 	std::move(emp);
+    if (_in.eof())
+		return false;
+	else
+		return true;
 }
+//
+//std::vector<Employer> CSVReader::read_all()
+//{
+//	std::vector<Employer> empls;
+//	for(auto )
+//
+//}

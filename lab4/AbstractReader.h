@@ -6,14 +6,15 @@
 #define ABSTRACT_READER_H
 
 #include "lab.h"
-#include "Employer.h"
+#include "employer.h"
 //#include "JSONReader.h"
 //#include "CSVReader.h"
 
 class AbstractReader {
 public:
-	virtual	Employer raed() {}
+	virtual	bool raed(Employer &) {}
 	virtual bool is_open() const {}
+//	virtual std::vector<Employer> read_all() {}
 	std::string get_path() const {return _path_r;}
 protected:
 

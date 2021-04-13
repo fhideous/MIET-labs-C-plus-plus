@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.17)
-project(cpp_lab4)
+project(cpp_lab)
 
-set(CMAKE_CXX_STANDARD 14)
-#find_package(nlohmann_json 3.2.0 REQUIRED)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(
-        cpp_lab4  main2.cpp lab_support.cpp
-        AbstractReader.cpp CSVReader.cpp JSONReader.cpp
-        Employer.cpp
-        Employer.h lab.h
-        AbstractReader.h CSVReader.h JSONReader.h
-        )
+add_executable(cpp_lab  main2.cpp lab_support.cpp
+        employer.cpp  employers.cpp out_data.cpp
+        professor.cpp Student.cpp
 
-#target_link_libraries(cpp_lab4 PRIVATE nlohmann_json::nlohmann_json)
+        lab.h
+        employer.h
+        employers.h
+        professor.h
+        Student.h
+        out_data.h Empl.cpp Empl.h)

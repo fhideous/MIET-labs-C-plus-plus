@@ -15,7 +15,8 @@ public:
 	}
 	void 		fd_close();
 	void		open_path(std::string &path);
-	Employer	read();
+	bool 		read(Employer&);
+//	std::vector<Employer> read_all();
 	bool		is_open() const;
 };
 #endif //CPP_LAB4_CSVREADER_H
