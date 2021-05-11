@@ -1,0 +1,3 @@
+/home/fhideous/CLionProjects/lab5/lab0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/fhideous/CLionProjects/lab5/lab0/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/fhideous/CLionProjects/lab5/lab0/cmake-build-debug/CMakeFiles/cpp_lab0.dir
