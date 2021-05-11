@@ -25,7 +25,12 @@ struct node
 	{
 		return (d1.year > d2.year ? true : false);
 	}
+	friend std::ostream& operator<< (std::ostream &out, const node &d)
+	{
+		out <<  d.n << "," << d.name << "," << d.year << "," << d.gender;
 
+		return out;
+	}
 };
 
 

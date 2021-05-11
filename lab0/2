@@ -1,40 +1,6 @@
-All employers: 
-==========================
-------------
-ID: 5
-Name: Lesh Liver
-Year: 2004
-SEX: FEMALE
-------------
-------------
-ID: 1
-Name: Kul Lesh Vlad
-Year: 2001
-SEX: MALE
-------------
-------------
-ID: 7
-Name: Emen Esevol
-Year: 1998
-SEX: HELICOPTER
-------------
-------------
-ID: 6
-Name: Semen Veselov
-Year: 1988
-SEX: HELICOPTER
-------------
-------------
-ID: 2
-Name: Ale Nik Orl
-Year: 1982
-SEX: MALE
-------------
-------------
-ID: 4
-Name: Vladimir Putin
-Year: 1970
-SEX: MALE
-------------
-==========================
-end of list
+4,Lesh Liver,2004,FEMALE
+1,Kul Lesh Vlad,2001,MALE
+6,Emen Esevol,1998,HELICOPTER
+5,Semen Veselov,1988,HELICOPTER
+2,Ale Nik Orl,1982,MALE
+3,Vladimir Putin,1970,MALE

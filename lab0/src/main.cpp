@@ -66,21 +66,38 @@ int main()
 	std::vector<node>	csv;
 
 	file.open("../csv.csv");
-	if(!file)
+	if(!file) {
 		return (check_errors(1, 0));
+	}
 
-	if (read_file(file, &csv))
+	if (read_file(file, &csv)) {
 		return (1);
+	}
 
+	file.close();
 	std::string file_0 = "../0";
 	std::string file_1 = "../1";
 	std::string file_2 = "../2";
 
+
+	// writing to file without overload
+/*
 	write_to_file(csv, file_0, print_file);
 	write_to_file(csv, file_1, print_file_if);
 	sort_by_year(csv);
 	write_to_file(csv, file_2, print_file);
+*/
 
-	file.close();
+	for (auto &n : csv) {
+		std::cout << n << std::endl;
+	}
+	sort_by_year(csv);
+
+	std::ofstream out(file_2);
+	for (auto &n : csv) {
+		out << n << std::endl;
+	}
+	out.close();
+
     return 0;
 }
