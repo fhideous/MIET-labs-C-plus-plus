@@ -21,5 +21,6 @@ public:
      * overloads
      */
 	friend CSVReader& operator>> (CSVReader &in, Employer &empl);
+	operator bool();
 };
 #endif

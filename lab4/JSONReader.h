@@ -20,9 +20,17 @@ public:
 	std::vector<Employer> read_all();
 	bool		is_open() const;
 
+	/*
+ 	* overloads
+ 	*/
+	friend JSONReader& operator>> (JSONReader &in, std::vector<Employer> &empl);
+
+
 private:
 	nlohmann::json json;
 };
+
+
 
 
 #endif //CPP_LAB4_JSONREADER_H

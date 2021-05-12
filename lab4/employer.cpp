@@ -9,7 +9,7 @@
 
 int Employer::s_id = 0;
 
-Employer::Employer() : _id(GET_ID()), _name("-"),
+Employer::Employer() : _id(0), _name("-"),
                        _year(0), _gender("") {}
 
 //Employer::Employer(const Employer &obj) : _id(obj._id), _name(obj._name),
@@ -86,6 +86,6 @@ std::string Employer::repr() const
 
 std::ostream& operator<< (std::ostream &out, const Employer &empl)
 {
-	out <<  empl._id << ";" << empl._name << ";" << empl._year << ";" << empl._gender << ";";
+	out <<  empl.GET_ID() << ";" << empl._name << ";" << empl._year << ";" << empl._gender << ";";
 	return out;
 }

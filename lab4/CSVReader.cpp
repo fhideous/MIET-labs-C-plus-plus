@@ -22,7 +22,6 @@ bool 		CSVReader::read(Employer &empl)
 {
 	std::string					s;
 	std::vector<std::string>	fr_split;
-//	Employer					emp;
 
 	std::getline(_in, s);
 	fr_split = split(s, ';');
@@ -57,4 +56,9 @@ CSVReader& operator>> (CSVReader &in, Employer &empl)
 	empl.set_year(stoi(data_sp[1]));
 	empl.set_gender(data_sp[2]);
 	return in;
+}
+
+CSVReader::operator bool()
+{
+	return (!_in.eof());
 }

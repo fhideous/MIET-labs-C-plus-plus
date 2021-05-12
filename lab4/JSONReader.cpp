@@ -44,7 +44,7 @@ bool  JSONReader::read(Employer &empl)
     count = 0;
 	empl = json[count].get<Employer>();
 	count++;
-	if (json[count + 1].empty()) // is working?
+	if (json[count + 1].empty())
 		return false;
 	else
 		return true;
@@ -59,5 +59,19 @@ std::vector<Employer> JSONReader::read_all() {
     }
     empls[0].id_reset();
 	return (empls);
+}
+
+/*
+ * overloads
+ */
+
+JSONReader& operator >> (JSONReader &in, std::vector<Employer> &empls)
+{
+	for(auto &i : in.json)
+	{
+		auto c = i.get<Employer>();
+		empls.push_back(std::move(c));
+	}
+	return in;
 }
 
