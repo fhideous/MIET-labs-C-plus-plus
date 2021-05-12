@@ -1,4 +1,3 @@
-
 #include "../hdrs/lab0.h"
 
 /*
@@ -94,7 +93,8 @@ int main()
 	sort_by_year(csv);
 
 	std::ofstream out(file_2);
-	for (auto &n : csv) {
+	for (auto &n : csv)
+	{
 		out << n << std::endl;
 	}
 	out.close();
