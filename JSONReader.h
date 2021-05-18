@@ -5,8 +5,8 @@
 #ifndef CPP_LAB4_JSONREADER_H
 #define CPP_LAB4_JSONREADER_H
 
-#include "AbstractReader.h"
 #include "json.hpp"
+#include "AbstractReader.h"
 
 class JSONReader: public AbstractReader {
 public:

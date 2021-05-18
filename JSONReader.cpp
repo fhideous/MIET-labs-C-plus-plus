@@ -4,6 +4,7 @@
 
 #include "JSONReader.h"
 
+
 void		JSONReader::open_path(std::string &path)
 {
 	_is_op = false;
@@ -67,11 +68,22 @@ std::vector<Employer> JSONReader::read_all() {
 
 JSONReader& operator >> (JSONReader &in, std::vector<Employer> &empls)
 {
-	for(auto &i : in.json)
-	{
-		auto c = i.get<Employer>();
-		empls.push_back(std::move(c));
-	}
+    try
+    {
+        for(auto &i : in.json)
+        {
+            auto c = i.get<Employer>();
+            empls.push_back(std::move(c));
+        }
+    }
+    catch (nlohmann::json::exception &e)
+    {
+        throw 1;
+    }
+    catch (std::exception &e)
+    {
+        throw -1;
+    }
 	return in;
 }
 

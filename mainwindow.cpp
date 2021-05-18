@@ -98,7 +98,7 @@ void MainWindow::on_pushButton_clicked()
         ui->textBrowser->error("Wrong reading file");
         return ;
     }
-    if (substr.back() == "csv")
+    if (ui->file_type->currentText() == "CSV")
     {
          CSVReader file(path);
          if (!file.is_open())
@@ -111,7 +111,7 @@ void MainWindow::on_pushButton_clicked()
             emplrs.push_back(std::move(empl));
          empl.id_reset();
     }
-    else if (substr.back() == "json")
+    else if (ui->file_type->currentText() == "JSON")
     {
        JSONReader file(path);
        if (!file.is_open())
@@ -119,7 +119,17 @@ void MainWindow::on_pushButton_clicked()
            ui->textBrowser->error("Wrong reading file");
            return ;
        }
-       file >> emplrs;
+       try {
+
+           file >> emplrs;
+       } catch (int i) {
+           if (i < 0)
+               ui->textBrowser->error("Wrong year field");
+           else
+               ui->textBrowser->error("Json has wrong data");
+
+           return ;
+       }
     }
     else
     {
