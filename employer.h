@@ -25,6 +25,7 @@ public:
     void set_name(const std::string &name) { _name = name;}
 
     void set_year(int year) { _year = year;}
+	void set_id(int id) { _id = id;}
     bool set_gender(const std::string &gender) { _gender = gender;}
     virtual	std::string repr() const;
     std::string     get_name() const {return _name;}

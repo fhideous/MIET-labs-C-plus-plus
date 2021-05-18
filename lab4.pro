@@ -28,7 +28,6 @@ SOURCES += \
     JSONReader.cpp \
     Student.cpp \
     employer.cpp \
-    employers.cpp \
     error_text_browser.cpp \
     lab_support.cpp \
     main.cpp \

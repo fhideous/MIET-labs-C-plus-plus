@@ -46,15 +46,18 @@ bool 		CSVReader::read(Employer &empl)
  * overloads
  */
 
-CSVReader& operator>> (CSVReader &in, Employer &empl)
+CSVReader& operator >> (CSVReader &in, Employer &empl)
 {
 	std::vector<std::string> data_sp;
 	std::string data;
 	in._in >> data;
 	data_sp = split(data, ';');
+	if(data_sp.size() != 3)
+		return in;
 	empl.set_name(data_sp[0]);
 	empl.set_year(stoi(data_sp[1]));
 	empl.set_gender(data_sp[2]);
+	empl.set_id(empl.GET_ID());
 	return in;
 }
 

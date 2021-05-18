@@ -7,7 +7,6 @@
 #include<QApplication>
 #include <QTabletEvent>
 #include "lab.h"
-#include "employers.h"
 #include "out_data.h"
 
 

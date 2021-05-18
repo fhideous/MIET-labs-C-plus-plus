@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "employers.h"
+#include "employer.h"
 #include "professor.h"
+#include "JSONReader.h"
 #include "Student.h"
 #include "Empl.h"
 #include "out_data.h"
@@ -9,7 +10,6 @@
 #include <QLineEdit>
 #include <string>
 #include "CSVReader.h"
-#include "JSONReader.h"
 #include "QFileDialog"
 #include "lab.h"
 
@@ -26,10 +26,14 @@ MainWindow::~MainWindow()
 }
 
 
+/*
+ *Add
+ */
+
 
 void MainWindow::on_AddBut_clicked()
 {
-    std::string path = "/home/fhideous/QT/lab4_app/lab3/1";
+    std::string path = name_file.toStdString();
     Employer empl;
     std::string name, year, sex;
 
@@ -58,11 +62,17 @@ void MainWindow::on_AddBut_clicked()
 
     }
     empl.set_name(name);
-    empl.set_year(std::stoi(year));
+    try
+    {
+        empl.set_year(std::stoi(year));
+    }
+    catch (std::exception& ex )
+    {
+        ui->textBrowser->error("Wrong year field");
+        return ;
+    }
     empl.set_gender(sex);
     OutEmplrs out(path);
-//    ui->textBrowser->error(ui->lineEdit_1->text() + ui->lineEdit_2->text());
-//    ui->textBrowser->error("Kek" + QString::fromStdString(year) + QString::fromStdString(sex));
     out.print_data(empl);
     ui->textBrowser->append("add in """ +
                             QString::fromStdString(path) +
@@ -70,47 +80,46 @@ void MainWindow::on_AddBut_clicked()
                             QString(name.c_str())+ ";" +
                             QString(year.c_str()) + ";" +
                             QString(sex.c_str()) + ";");
-//ui->textBrowser->error(QString::fromStdString(empl.get_gender()));
 }
+
+/*
+ *Find
+ */
 
 void MainWindow::on_pushButton_clicked()
 {
     std::vector<Employer> emplrs;
-    std::string path = "/home/fhideous/QT/lab4_app/lab3/1";
     QString str = ui->lineEdit_3->text();
     std::vector<std::string> substr;
     substr = split(name_file.toStdString(), '.');
-
+    std::string path = name_file.toStdString();
+    if (substr.size() != 2)
+    {
+        ui->textBrowser->error("Wrong reading file");
+        return ;
+    }
     if (substr.back() == "csv")
     {
          CSVReader file(path);
-
          if (!file.is_open())
          {
              ui->textBrowser->error("Wrong reading file");
              return ;
          }
-         while (1)
-         {
-            Employer empl;
-            if (!file.read(empl))
-            {
-                empl.id_reset();
-                break;
-            }
+         Employer empl;
+         while (file >> empl)
             emplrs.push_back(std::move(empl));
-         }
+         empl.id_reset();
     }
     else if (substr.back() == "json")
     {
-       path = "/home/fhideous/QT/lab4_app/lab3/1.json";
        JSONReader file(path);
        if (!file.is_open())
        {
            ui->textBrowser->error("Wrong reading file");
            return ;
        }
-       emplrs = file.read_all();
+       file >> emplrs;
     }
     else
     {
@@ -124,8 +133,6 @@ void MainWindow::on_pushButton_clicked()
         if (QString::fromStdString(n.get_name()) == str)
             break ;
         i++;
-
-//        ui->textBrowser->error("kek: " + QString::fromStdString(n.get_gender()));
     }
     if (i < emplrs.size())
     {
@@ -143,7 +150,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_Info_clicked()
 {
     std::vector<Employer*> emplrs;
-    Employers my_mplrs;
+//    Employers my_mplrs;
 
     std::vector<std::string> data = {"Vlad", "2001", "MALE"};
     Empl emp1("120400",data);

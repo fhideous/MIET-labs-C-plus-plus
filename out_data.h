@@ -2,8 +2,7 @@
 // Created by fhideous on 16.03.2021.
 //
 
-//#include "../hdrs/employers.h"
-#include "employers.h"
+#include "Empl.h"
 
 #ifndef CPP_LAB_OUT_DATA_H
 #define CPP_LAB_OUT_DATA_H
