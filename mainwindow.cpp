@@ -66,9 +66,10 @@ void MainWindow::on_AddBut_clicked()
     {
         empl.set_year(std::stoi(year));
     }
-    catch (std::exception& ex )
+    catch (std::exception& ex)
     {
         ui->textBrowser->error("Wrong year field");
+
         return ;
     }
     empl.set_gender(sex);
@@ -120,7 +121,6 @@ void MainWindow::on_pushButton_clicked()
            return ;
        }
        try {
-
            file >> emplrs;
        } catch (int i) {
            if (i < 0)

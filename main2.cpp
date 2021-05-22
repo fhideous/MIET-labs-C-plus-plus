@@ -6,6 +6,7 @@
 #include "out_data.h"
 #include "JSONReader.h"
 #include "CSVReader.h"
+#include "CsvException.h"
 
 
 int main(int argc, char *argv[])
@@ -46,10 +47,19 @@ int main(int argc, char *argv[])
 			return 1;
 		}
 		Employer empl;
-		while (file >> empl)
+		int	n = 1;
+		try
 		{
-			std::cout << empl.get_id()<< std::endl;
-			emplrs.push_back(std::move(empl));
+			while (file >> empl)
+			{
+				std::cout <<empl.get_id() << "\t" << empl.get_name() << "\t" <<empl.get_year() << std::endl;
+				emplrs.push_back(std::move(empl));
+				n++;
+			}
+		}
+		catch(CsvException &ex)
+		{
+			std::cout << ex.what() << ". Line № " << n << std::endl;
 		}
 		empl.id_reset();
 

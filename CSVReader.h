@@ -2,7 +2,7 @@
 #define CPP_LAB4_CSVREADER_H
 
 #include "AbstractReader.h"
-
+#include "CsvException.h"
 class CSVReader: public AbstractReader
 {
 public:
@@ -20,7 +20,7 @@ public:
     /*
      * overloads
      */
-	friend CSVReader& operator>> (CSVReader &in, Employer &empl);
+	friend CSVReader& operator >> (CSVReader &in, Employer &empl);
 	operator bool();
 };
 #endif

@@ -25,18 +25,13 @@ bool 		CSVReader::read(Employer &empl)
 
 	std::getline(_in, s);
 	fr_split = split(s, ';');
-	if(!check_vector_csv(fr_split))
-	{
-		empl.set_name("Nan");
-        empl.set_year(-1);
-		empl.set_gender("KeK");
-	}
+	if (!fr_split.empty())
+		check_vector_csv(fr_split);
 	else
-	{
-		empl.set_name(std::move(fr_split[0]));
-        empl.set_year(stoi(std::move(fr_split[1])));
-        empl.set_gender(std::move(fr_split[2]));
-	}
+		return false;
+	empl.set_name(std::move(fr_split[0]));
+	empl.set_year(stoi(std::move(fr_split[1])));
+	empl.set_gender(std::move(fr_split[2]));
     if (_in.eof())
 		return false;
     return true;
@@ -52,10 +47,19 @@ CSVReader& operator >> (CSVReader &in, Employer &empl)
 	std::string data;
 	in._in >> data;
 	data_sp = split(data, ';');
-	if(data_sp.size() != 3)
+	if (!data_sp.empty())
+		check_vector_csv(data_sp);
+	else
 		return in;
     empl.set_name(data_sp[0]);
-	empl.set_year(stoi(data_sp[1]));
+    try
+	{
+		empl.set_year(stoi(data_sp[1]));
+	}
+    catch(std::exception &ex)
+	{
+    	throw CsvException("Year field has non digits values");
+	}
 	empl.set_gender(data_sp[2]);
 	empl.set_id(empl.GET_ID());
 	return in;

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(cpp_lab  main2.cpp lab_support.cpp
         employer.cpp   out_data.cpp
         professor.cpp Student.cpp AbstractReader.cpp
-        CSVReader.cpp JSONReader.cpp
+        CSVReader.cpp JSONReader.cpp CsvException.cpp
         lab.h
         employer.h
 

@@ -2579,7 +2579,7 @@ struct position_t
 {
     /// the total number of characters read
     std::size_t chars_read_total = 0;
-    /// the number of characters read in the current line
+    /// the number of characters read in the current line_number
     std::size_t chars_read_current_line = 0;
     /// the number of lines read
     std::size_t lines_read = 0;
@@ -2806,7 +2806,7 @@ class parse_error : public exception
 
     static std::string position_string(const position_t& pos)
     {
-        return " at line " + std::to_string(pos.lines_read + 1) +
+        return " at line_number " + std::to_string(pos.lines_read + 1) +
                ", column " + std::to_string(pos.chars_read_current_line);
     }
 };
@@ -6586,7 +6586,7 @@ class lexer : public lexer_base<BasicJsonType>
                         case 'f':
                             add('\f');
                             break;
-                        // line feed
+                        // line_number feed
                         case 'n':
                             add('\n');
                             break;
@@ -7129,7 +7129,7 @@ class lexer : public lexer_base<BasicJsonType>
     {
         switch (get())
         {
-            // single-line comments skip input until a newline or EOF is read
+            // single-line_number comments skip input until a newline or EOF is read
             case '/':
             {
                 while (true)
@@ -7148,7 +7148,7 @@ class lexer : public lexer_base<BasicJsonType>
                 }
             }
 
-            // multi-line comments skip input until */ is read
+            // multi-line_number comments skip input until */ is read
             case '*':
             {
                 while (true)
@@ -10872,7 +10872,7 @@ class parser
                 skip_to_state_evaluation = false;
             }
 
-            // we reached this line after we successfully parsed a value
+            // we reached this line_number after we successfully parsed a value
             if (states.empty())
             {
                 // empty stack: we reached the end of the hierarchy: done
@@ -17221,7 +17221,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     key         | description
     ----------- | ---------------
     `compiler`  | Information on the used compiler. It is an object with the following keys: `c++` (the used C++ standard), `family` (the compiler family; possible values are `clang`, `icc`, `gcc`, `ilecpp`, `msvc`, `pgcpp`, `sunpro`, and `unknown`), and `version` (the compiler version).
-    `copyright` | The copyright line for the library as string.
+    `copyright` | The copyright line_number for the library as string.
     `name`      | The name of the library as string.
     `platform`  | The used platform as string. Possible values are `win32`, `linux`, `apple`, `unix`, and `unknown`.
     `url`       | The URL of the project as string.
@@ -23343,7 +23343,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             return static_cast<number_integer_t>(lhs.m_value.number_unsigned) < rhs.m_value.number_integer;
         }
 
-        // We only reach this line if we cannot compare values. In that case,
+        // We only reach this line_number if we cannot compare values. In that case,
         // we compare types. Note we have to call the operator explicitly,
         // because MSVC has problems otherwise.
         return operator<(lhs_type, rhs_type);
