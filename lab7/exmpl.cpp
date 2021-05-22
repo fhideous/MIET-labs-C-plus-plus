@@ -1,6 +1,7 @@
 #include <iostream>
 
 template<typename T>
+
 T min(const T& a, const T&b)
 {
 	if (a < b)
@@ -17,6 +18,7 @@ std::string min(const std::string& a, const std::string& b)
 	else
 		return b;
 }
+
 
 int main()
 {
