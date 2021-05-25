@@ -3,5 +3,6 @@ project(cpp_lab)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(cpp_lab
-        main.cpp)
+add_executable(cpp_lab Point.cpp
+        main.cpp
+        )

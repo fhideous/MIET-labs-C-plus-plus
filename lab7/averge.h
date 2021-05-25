@@ -4,7 +4,6 @@
 #include "Point.h"
 
 template<typename T>
-
 T averge(const std::vector<T> &vec)
 {
 	T res = 0;
@@ -12,13 +11,14 @@ T averge(const std::vector<T> &vec)
 
 	while (i < vec.size())
 	{
-		res += vec[i];
+		res = res + vec[i];
 		i++;
 	}
-	res /= vec.size();
+	res = res / vec.size();
 	return res;
 }
 
+/*
 template<typename T>
 Point<T> averge(const std::vector<Point<T>> &pnt)
 {
@@ -35,5 +35,6 @@ Point<T> averge(const std::vector<Point<T>> &pnt)
 	res.y /= pnt.size();
 	return res;
 }
+*/
 
 #endif
