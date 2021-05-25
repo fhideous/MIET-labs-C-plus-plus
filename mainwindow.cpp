@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     Figure *circle = new Circle(QPoint{100, 400}, 90, 90);
     vec.push_back(circle);
 
-    ui->DrawBoard->setFigures(vec);
+    ui->DrawBoard->setFigures(std::move(vec));
+
 }
 
 MainWindow::~MainWindow()

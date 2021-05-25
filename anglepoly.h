@@ -9,16 +9,16 @@ class AnglePoly : public Figure
 public:
     AnglePoly() = default ;
     AnglePoly(const std::array<QPoint, N>& src):
-        map(src){}
+        arr(src){}
 
     virtual void draw(QPainter &P) override
     {
         P.setPen(Qt::black);
         for (int i = 0; i < N; i++)
-            P.drawLine(map[i], map[(i + 1) % N]);
+            P.drawLine(arr[i], arr[(i + 1) % N]);
     }
 protected:
-    std::array <QPoint, N> map;
+    std::array <QPoint, N> arr;
 };
 
 #endif // ANGLEPOLY_H

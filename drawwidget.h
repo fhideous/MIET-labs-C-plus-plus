@@ -11,8 +11,8 @@ class DrawWidget : public QWidget
 public:
     explicit DrawWidget(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
-    void setFigures(const std::vector<Figure*>&);
-
+    void setFigures(std::vector<Figure*>&&);
+    ~DrawWidget();
 signals:
 
 protected:

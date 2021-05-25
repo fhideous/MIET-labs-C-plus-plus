@@ -5,6 +5,12 @@ DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent)
 
 }
 
+DrawWidget::~DrawWidget()
+{
+    for(auto &n: to_paint)
+        delete (n);
+}
+
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
@@ -14,7 +20,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     }
 }
 
-void DrawWidget::setFigures(const std::vector<Figure*>& src)
+void DrawWidget::setFigures(std::vector<Figure*>&& src)
 {
-    to_paint = std::move(src);
+    to_paint = src;
 }
