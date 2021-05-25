@@ -7,8 +7,11 @@ DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent)
 
 DrawWidget::~DrawWidget()
 {
-    for(auto &n: to_paint)
-        delete (n);
+    for(int i = to_paint.size() - 1; i >= 0; --i)
+    {
+        delete (to_paint[i]);
+        to_paint.erase(to_paint.begin() + i);
+    }
 }
 
 void DrawWidget::paintEvent(QPaintEvent *event)
@@ -18,7 +21,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     {
         i->draw(painter);
     }
-    to_paint.clear();
+
 }
 
 void DrawWidget::setFigures(std::vector<Figure*>&& src)

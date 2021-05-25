@@ -9,7 +9,7 @@ class Figure
 {
 public:
     Figure();
-    ~Figure() {};
+    virtual ~Figure() {};
     virtual void draw(QPainter&) = 0;
 };
 
