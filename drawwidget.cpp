@@ -18,6 +18,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     {
         i->draw(painter);
     }
+    to_paint.clear();
 }
 
 void DrawWidget::setFigures(std::vector<Figure*>&& src)
