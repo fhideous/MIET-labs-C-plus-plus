@@ -1,3 +1,4 @@
+
 # MIET-labs-CPP
 
-Tasks in doc folder. 
+task in doc/ folder 
