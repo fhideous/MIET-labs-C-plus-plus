@@ -1,3 +1,5 @@
-# MIET-labs-C-
+=======
 
-task in doc/ folder
+# MIET-labs-CPP
+
+task in doc/ folder 
